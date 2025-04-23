@@ -12,7 +12,8 @@ func changeNum(num int)  {
 	num = 10
 	fmt.Println("Inside changeNum function:", num)
 }
-
+// Call by Reference
+// Pointer is a variable that stores the memory address of another variable.
 func changedNum2(num *int){
 	*num = 10
 	fmt.Println("Inside changeNum2 function:", *num)
