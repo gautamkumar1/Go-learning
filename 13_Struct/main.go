@@ -23,6 +23,15 @@ func (s StructName) getData() {
      // method code here
 }
 - Constructors are not available in Go, but we can create a function that initializes the struct and returns it.
+
+*
+*------------- 🧠 What is Struct Embedding? ------------
+- Struct embedding means putting one struct inside another struct.
+- It allows you to create complex data types by combining simpler ones.
+- Organize your code better and avoid duplication.
+- Sometimes works like inheritance in other languages
+*
+
 */
 package main
 
@@ -30,12 +39,19 @@ import (
 	"fmt"
 	"time"
 )
-
+type Employee struct{
+	id int
+	position string
+	salary int
+}
 type Person struct {
 	Name string
 	Age  int
 	City string
 	CreatedAt time.Time // This field will be automatically set to the current time when a new Person is created
+
+	// Another struct inside this struct
+	Employee 
 }
 // setData
 func (p *Person) setData(name string, age int, city string) {
@@ -94,4 +110,24 @@ func main() {
 		isGood: true,
 		}
 	fmt.Println("Language: ", language)
+
+
+	/*
+	* 
+	* ------------- Struct Embedding -------------
+	*
+
+	*/
+
+	person4 := Person{
+		Name: "Gautam",
+		Age:  35,
+		City: "Delhi",
+		Employee: Employee{ // We can also create seprate struct for Employee and use it here
+			id: 1,
+			position: "Software Engineer",
+			salary: 50000,
+		},
+	}
+	fmt.Println("Person4 Data: ", person4)
 }
